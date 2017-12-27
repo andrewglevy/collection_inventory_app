@@ -1,0 +1,32 @@
+<%= form_with(model: collection, local: true) do |form| %>
+  <% if collection.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(collection.errors.count, "error") %> prohibited this collection from being saved:</h2>
+
+      <ul>
+      <% collection.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :collection_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :public %>
+    <%= form.check_box :public, id: :collection_public %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id, id: :collection_user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
