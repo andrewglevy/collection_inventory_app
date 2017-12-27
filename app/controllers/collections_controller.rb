@@ -5,6 +5,7 @@ class CollectionsController < ApplicationController
   # GET /collections.json
   def index
     @collections = Collection.all
+    # test
   end
 
   # GET /collections/1
