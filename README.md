@@ -1,0 +1,1 @@
+# collection_inventory_app
