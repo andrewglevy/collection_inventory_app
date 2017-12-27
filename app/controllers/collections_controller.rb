@@ -1,11 +1,11 @@
 class CollectionsController < ApplicationController
   before_action :set_collection, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:show, :edit, :update, :destroy, :new]
 
   # GET /collections
   # GET /collections.json
   def index
     @collections = Collection.all
-    # test
   end
 
   # GET /collections/1
