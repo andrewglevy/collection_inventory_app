@@ -16,4 +16,16 @@
 </p>
 <%= link_to 'Edit', edit_collection_path(@collection) %> |
 <%= link_to 'Destroy', @collection, method: :delete, data: { confirm: 'Are you sure?' } %> <br />
+
+<p>
+  <h3>Items:</h3>
+</p>
+<p>
+<% @collection.items.each do |item| %>
+  <strong><%= item.name %></strong> <br />
+  <%= item.status_name %> <br />
+  <%= item.notes %>
+<% end %>
+</p>
+<h3>New item</h3>
 <%= link_to 'Back', collections_path %>
