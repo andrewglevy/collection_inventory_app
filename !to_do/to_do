@@ -8,6 +8,7 @@
   -application.html.erb link for logged in users to go to their profile
 -cancancan, change views to only show links for owner
   -https://www.learnacademy.org/days/760
+  -new item/edit items from show page only there for signed in users
 -only public collections are visible to other members
   -both on index and on profile page
 -gitignore
