@@ -12,8 +12,8 @@
 
 <p>
   <strong>User:</strong>
-  <%= @collection.user_id %>
+  <%= @collection.user.username %>
 </p>
-
 <%= link_to 'Edit', edit_collection_path(@collection) %> |
+<%= link_to 'Destroy', @collection, method: :delete, data: { confirm: 'Are you sure?' } %> <br />
 <%= link_to 'Back', collections_path %>
