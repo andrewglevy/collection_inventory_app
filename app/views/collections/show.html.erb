@@ -1,9 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<h3>
   <%= @collection.name %>
-</p>
+</h3>
 
 <p>
   <strong>Public:</strong>
@@ -23,9 +22,25 @@
 <p>
 <% @collection.items.each do |item| %>
   <strong><%= item.name %></strong> <br />
-  <%= item.status_name %> <br />
-  <%= item.notes %>
+  <p>Status: <%= item.status_name %> </p><br />
+  <% if !(item.notes.nil?) %>
+    <p>Notes: <%= item.notes %></p></br >
+  <% end %>
 <% end %>
 </p>
-<h3>New item</h3>
+<strong>New item</strong>
+<form method="post" action ="">
+  <!-- form action and route needed -->
+  <label for="name">Name</label>
+  <input type="text" name="name" id="name" label="Name" maxlength="50"/><br />
+  <input type="hidden" name="collection_id" value=<% @collection.id %>>
+  <!-- need correct syntax for inner ruby for collection.id -->
+  <!-- params are string - action needed to turn values to int? -->
+  <label for="notes">Notes</label>
+  <input type="text" name="notes" id="notes" label="Notes" maxlength="100"><br />
+  <input type="radio" name="status" value="0" checked> Want to try |
+  <input type="radio" name="status" value="1"> Would buy again |
+  <input type="radio" name="status" value="2"> Would not buy again<br />
+  <input type="submit" value="Add item to collection">
+</form>
 <%= link_to 'Back', collections_path %>

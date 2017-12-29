@@ -33,23 +33,12 @@ class ItemsController < ApplicationController
       end
     end
 
-    def status_name
-      if @status === 0
-        @status_name = "Want to try"
-      elsif @status === 1
-        @status_name = "Would buy again"
-      elsif @status === 2
-        @status_name = "Would not buy again"
-      end
-      @status_name
-    end
-
   private
     def item
       @item = Item.find(params[:id])
     end
 
-    def collection_params
+    def item_params
       params.require(:item).permit(:name, :status, :collection_id, :notes)
     end
 end
