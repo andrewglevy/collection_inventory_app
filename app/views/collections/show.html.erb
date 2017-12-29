@@ -13,21 +13,23 @@
   <strong>User:</strong>
   <%= @collection.user.username %>
 </p>
-<%= link_to 'Edit', edit_collection_path(@collection) %> |
-<%= link_to 'Destroy', @collection, method: :delete, data: { confirm: 'Are you sure?' } %> <br />
+<%= link_to 'Edit collection', edit_collection_path(@collection) %> |
+<%= link_to 'Destroy collection', @collection, method: :delete, data: { confirm: 'Are you sure?' } %> <br />
 
 <p>
-  <h3>Items:</h3>
+  <h3>Products:</h3>
 </p>
-<p>
-<% @collection.items.each do |item| %>
-  <strong><%= item.name %></strong> <br />
-  <p>Status: <%= item.status.name %> </p><br />
-  <% if !(item.notes.nil?) %>
-    <p>Notes: <%= item.notes %></p></br >
+<div class="list-group">
+  <% @collection.items.each do |item| %>
+    <div class="list-group-item">
+      <strong><%= item.name %></strong>
+      <p>Status: <%= item.status.name %> </p>
+      <% if !(item.notes.nil?) %>
+        <p>Notes: <%= item.notes %></p>
+      <% end %>
+  </div>
   <% end %>
-<% end %>
-</p>
-<strong>New item</strong>
+</div>
+<strong>New product</strong>
 <%= render 'items/form', item: @item %>
 <%= link_to 'Back', collections_path %>
