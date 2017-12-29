@@ -18,10 +18,10 @@ class ItemsController < ApplicationController
     def update
       respond_to do |format|
         if @item.update(collection_params)
-          format.html { redirect_to @collection, notice: 'Item was successfully updated.' }
+          format.html { redirect_to @item.collection, notice: 'Item was successfully updated.' }
           format.json { render :show, status: :ok, location: @collection }
         else
-          format.html { render :edit }
+          format.html { render 'collections/show' }
           format.json { render json: @collection.errors, status: :unprocessable_entity }
         end
       end
