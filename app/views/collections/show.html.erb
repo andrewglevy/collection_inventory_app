@@ -7,14 +7,19 @@
 <p>
   <strong>Public:</strong>
   <%= @collection.public %>
-</p>
-
-<p>
+</br>
   <strong>User:</strong>
   <%= @collection.user.username %>
 </p>
 <%= link_to 'Edit collection', edit_collection_path(@collection) %> |
 <%= link_to 'Destroy collection', @collection, method: :delete, data: { confirm: 'Are you sure?' } %> <br />
+  <div class="new_product_hidden">
+    <strong>New product</strong>
+    <%= render 'items/form', item: @item %>
+  </div>
+  <button class="btn-default new_product_button hidden_field">Add product</button>
+
+
 
 <p>
   <h3>Products:</h3>
@@ -30,6 +35,4 @@
   </div>
   <% end %>
 </div>
-<strong>New product</strong>
-<%= render 'items/form', item: @item %>
 <%= link_to 'Back', collections_path %>
