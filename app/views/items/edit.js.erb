@@ -1,1 +1,2 @@
-<%= render 'form', item: @item %>
+
+ $('#itemEdit<%=@item.id%>').html("<%= j render 'form', item: @item %>")

@@ -24,13 +24,9 @@
 <div class="list-group">
   <% @collection.items.each do |item| %>
     <div class="list-group-item" id="item<%=item.id%>">
-      <strong><%= item.name %></strong>
-      <p>Status: <%= item.status.name %> </p>
-      <% if !(item.notes.nil?) %>
-        <p>Notes: <%= item.notes %></p>
-      <% end %>
-    <%= link_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
-  </div>
+      <%=render item%>
+      <!-- rails knows that "item" is the _item partial in the items view folder -->
+    </div>
   <% end %>
 </div>
 <%= link_to 'Back', collections_path %>

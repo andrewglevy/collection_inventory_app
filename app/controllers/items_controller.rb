@@ -17,12 +17,14 @@ class ItemsController < ApplicationController
 
     def update
       respond_to do |format|
-        if @item.update(collection_params)
+        if @item.update(item_params)
           format.html { redirect_to @item.collection, notice: 'Item was successfully updated.' }
           format.json { render :show, status: :ok, location: @collection }
+          format.js
         else
           format.html { render 'collections/show' }
           format.json { render json: @collection.errors, status: :unprocessable_entity }
+          format.js
         end
       end
     end
@@ -37,6 +39,7 @@ class ItemsController < ApplicationController
     end
 
     def edit
+      @collection = @item.collection
     end
 
   private
