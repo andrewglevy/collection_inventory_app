@@ -30,13 +30,17 @@ class ItemsController < ApplicationController
     def destroy
       @item.destroy
       respond_to do |format|
-        format.html { redirect_to @collection, notice: 'Item was successfully destroyed.' }
+        format.html { redirect_to @item.collection, notice: 'Item was successfully destroyed.' }
         format.json { head :no_content }
+        format.js
       end
     end
 
+    def edit
+    end
+
   private
-    def item
+    def set_item
       @item = Item.find(params[:id])
     end
 

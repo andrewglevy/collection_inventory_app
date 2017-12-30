@@ -17,21 +17,19 @@
     <strong>New product</strong>
     <%= render 'items/form', item: @item %>
   </div>
-  <button class="btn-default new_product_button hidden_field">Add product</button>
-
-
-
+  <button class="btn-primary new_product_button hidden_field">Add product</button>
 <p>
   <h3>Products:</h3>
 </p>
 <div class="list-group">
   <% @collection.items.each do |item| %>
-    <div class="list-group-item">
+    <div class="list-group-item" id="item<%=item.id%>">
       <strong><%= item.name %></strong>
       <p>Status: <%= item.status.name %> </p>
       <% if !(item.notes.nil?) %>
         <p>Notes: <%= item.notes %></p>
       <% end %>
+    <%= link_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
   </div>
   <% end %>
 </div>
