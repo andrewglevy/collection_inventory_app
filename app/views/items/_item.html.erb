@@ -1,0 +1,10 @@
+
+  <strong><%= item.name %></strong>
+  <p>Status: <%= item.status.name %> </p>
+  <% if !(item.notes.nil?) %>
+    <p>Notes: <%= item.notes %></p>
+  <% end %>
+  <%= link_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+  <%= link_to 'Edit', edit_item_path(item), remote: true %>
+  <div id="itemEdit<%=item.id%>">
+  </div>

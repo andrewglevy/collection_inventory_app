@@ -1,19 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<h3>
   <%= @collection.name %>
-</p>
+</h3>
 
 <p>
   <strong>Public:</strong>
   <%= @collection.public %>
-</p>
-
-<p>
+</br>
   <strong>User:</strong>
   <%= @collection.user.username %>
 </p>
-<%= link_to 'Edit', edit_collection_path(@collection) %> |
-<%= link_to 'Destroy', @collection, method: :delete, data: { confirm: 'Are you sure?' } %> <br />
+<%= link_to 'Edit collection', edit_collection_path(@collection) %> |
+<%= link_to 'Destroy collection', @collection, method: :delete, data: { confirm: 'Are you sure?' } %> <br />
+  <div class="new_product_hidden new_product_field">
+    <strong>New product</strong>
+    <%= render 'items/form', item: @item %>
+  </div>
+  <button class="btn-primary new_product_button hidden_field">Add product</button>
+<p>
+  <h3>Products:</h3>
+</p>
+<div class="list-group">
+  <% @collection.items.each do |item| %>
+    <div class="list-group-item" id="item<%=item.id%>">
+      <%=render item%>
+      <!-- rails knows that "item" is the _item partial in the items view folder -->
+    </div>
+  <% end %>
+</div>
 <%= link_to 'Back', collections_path %>

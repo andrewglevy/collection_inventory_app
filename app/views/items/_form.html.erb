@@ -1,0 +1,40 @@
+<%= form_with(model: item, remote: true) do |form| %>
+  <% if item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :item_name, maxlength: 50, size: 60 %>
+  </div>
+
+  <div class="field">
+    <input type="hidden" name="item[collection_id]" value="<%= @collection.id %>">
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.collection_select(:status_id, Status.all, :id, :name, prompt: true) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :notes %>
+    <%= form.text_field :notes, maxlength: 100, size: 120 %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Save"%>
+  </div>
+
+  <%if action_name=="edit"%>
+    <%= link_to 'Close', item_path(@item), remote: true %>
+  <%end%>
+<% end %>
