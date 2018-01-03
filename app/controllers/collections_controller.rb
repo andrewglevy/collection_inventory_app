@@ -44,11 +44,13 @@ class CollectionsController < ApplicationController
   def update
     respond_to do |format|
       if @collection.update(collection_params)
-        format.html { redirect_to @collection, notice: 'Collection was successfully updated.' }
+        format.html { redirect_to @collection }
         format.json { render :show, status: :ok, location: @collection }
+        # format.js
       else
         format.html { render :edit }
         format.json { render json: @collection.errors, status: :unprocessable_entity }
+        # format.js
       end
     end
   end
@@ -60,6 +62,7 @@ class CollectionsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to collections_url, notice: 'Collection was successfully destroyed.' }
       format.json { head :no_content }
+
     end
   end
 

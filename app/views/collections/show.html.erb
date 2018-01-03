@@ -11,6 +11,16 @@
   <strong>User:</strong>
   <%= @collection.user.username %>
 </p>
+
+<!-- might need to add format.js here but currently that renders update.js.erb instead of executing it -->
+<%= form_with(model: @collection, remote: true, class: :collection_update) do |form| %>
+  <div class="field">
+    <%= form.label :public %>
+    <%= form.check_box :public, id: :collection_public %>
+  </div>
+
+<%end%>
+
 <%= link_to 'Edit collection', edit_collection_path(@collection) %> |
 <%= link_to 'Destroy collection', @collection, method: :delete, data: { confirm: 'Are you sure?' } %> <br />
   <div class="new_product_hidden new_product_field">

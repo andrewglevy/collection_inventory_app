@@ -1,13 +1,11 @@
--items controller/views/form stuff
-  -item crud functions accessible directly on collection page, no edit/show page?
-  -can edit public status on collection show page
--jquery to edit items directly on collection page
-  -http://railscasts.com/episodes/136-jquery-ajax-revised
-  -https://www.youtube.com/watch?v=FBxVN7U1Qsk
+-collection show page
+  -can edit public status on collection show page as ajax request
+    -https://www.youtube.com/watch?v=FBxVN7U1Qsk
+    -can edit collection name on show page
 -user profile page with index of that user's collections
   -make username on collection index/show a href to the profile?
   -application.html.erb link for logged in users to go to their profile
--cancancan, change views to only show links for owner
+-change views to only show create/update/destroy links for owner (cancan?)
   -https://www.learnacademy.org/days/760
   -new item/edit items from show page only there for signed in users
 -only public collections are visible to other members
